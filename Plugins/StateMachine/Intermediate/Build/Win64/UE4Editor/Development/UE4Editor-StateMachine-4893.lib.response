@@ -1,0 +1,13 @@
+/NOLOGO
+/errorReport:prompt
+/MACHINE:x64
+/SUBSYSTEM:WINDOWS
+/DEF
+/NAME:"UE4Editor-StateMachine-4893.dll"
+/IGNORE:4221
+/NODEFAULTLIB
+"G:\UnrealEngine\UE_4.17\Engine\Intermediate\Build\Win64\UE4Editor\Development\Engine\SharedPCH.Engine.h.obj"
+"G:\UnrealProjects\PluginDevelopment\Plugins\StateMachine\Intermediate\Build\Win64\UE4Editor\Development\StateMachine\Module.StateMachine.cpp.obj"
+"G:\UnrealEngine\UE_4.17\Engine\Intermediate\Build\Win64\UE4Editor\Development\StateMachine\PCLaunch.rc.res"
+"G:\UnrealEngine\UE_4.17\Engine\Intermediate\Build\Win64\UE4Editor\Development\ModuleVersionResource.rc.inl.res"
+/OUT:"G:\UnrealProjects\PluginDevelopment\Plugins\StateMachine\Intermediate\Build\Win64\UE4Editor\Development\UE4Editor-StateMachine-4893.lib"

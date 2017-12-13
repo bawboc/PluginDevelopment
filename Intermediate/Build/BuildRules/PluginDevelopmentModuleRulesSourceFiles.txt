@@ -1,0 +1,4 @@
+G:\UnrealProjects\PluginDevelopment\Source\PluginDevelopment\PluginDevelopment.Build.cs
+G:\UnrealProjects\PluginDevelopment\Plugins\StateMachine\Source\StateMachine\StateMachine.Build.cs
+G:\UnrealProjects\PluginDevelopment\Source\PluginDevelopment.Target.cs
+G:\UnrealProjects\PluginDevelopment\Source\PluginDevelopmentEditor.Target.cs

@@ -27,6 +27,8 @@ void EmptyLinkFunctionForGeneratedCodeQuest() {}
 	PLUGINDEVELOPMENT_API UFunction* Z_Construct_UFunction_UQuestStatus_UpdateQuests();
 	PLUGINDEVELOPMENT_API UClass* Z_Construct_UClass_UQuestStatus_NoRegister();
 	ENGINE_API UClass* Z_Construct_UClass_UActorComponent();
+	PLUGINDEVELOPMENT_API UClass* Z_Construct_UClass_UQuestWithResult_NoRegister();
+	PLUGINDEVELOPMENT_API UClass* Z_Construct_UClass_UQuestWithResult();
 // End Cross Module References
 static UEnum* EQuestCompletion_StaticEnum()
 {
@@ -272,6 +274,63 @@ static struct FScriptStruct_PluginDevelopment_StaticRegisterNativesFQuestInProgr
 	IMPLEMENT_CLASS(UQuestStatus, 1559662001);
 	static FCompiledInDefer Z_CompiledInDefer_UClass_UQuestStatus(Z_Construct_UClass_UQuestStatus, &UQuestStatus::StaticClass, TEXT("/Script/PluginDevelopment"), TEXT("UQuestStatus"), false, nullptr, nullptr, nullptr);
 	DEFINE_VTABLE_PTR_HELPER_CTOR(UQuestStatus);
+	void UQuestWithResult::StaticRegisterNativesUQuestWithResult()
+	{
+	}
+	UClass* Z_Construct_UClass_UQuestWithResult_NoRegister()
+	{
+		return UQuestWithResult::StaticClass();
+	}
+	UClass* Z_Construct_UClass_UQuestWithResult()
+	{
+		static UClass* OuterClass = NULL;
+		if (!OuterClass)
+		{
+			Z_Construct_UClass_UQuest();
+			Z_Construct_UPackage__Script_PluginDevelopment();
+			OuterClass = UQuestWithResult::StaticClass();
+			if (!(OuterClass->ClassFlags & CLASS_Constructed))
+			{
+				UObjectForceRegistration(OuterClass);
+				OuterClass->ClassFlags |= (EClassFlags)0x20100080u;
+
+
+				UProperty* NewProp_FailureInputs = new(EC_InternalUseOnlyConstructor, OuterClass, TEXT("FailureInputs"), RF_Public|RF_Transient|RF_MarkAsNative) UArrayProperty(CPP_PROPERTY_BASE(FailureInputs, UQuestWithResult), 0x0020080000000001);
+				UProperty* NewProp_FailureInputs_Inner = new(EC_InternalUseOnlyConstructor, NewProp_FailureInputs, TEXT("FailureInputs"), RF_Public|RF_Transient|RF_MarkAsNative) UObjectProperty(FObjectInitializer(), EC_CppProperty, 0, 0x0000000000000000, Z_Construct_UClass_USM_InputAtom_NoRegister());
+				UProperty* NewProp_FailureQuests = new(EC_InternalUseOnlyConstructor, OuterClass, TEXT("FailureQuests"), RF_Public|RF_Transient|RF_MarkAsNative) UArrayProperty(CPP_PROPERTY_BASE(FailureQuests, UQuestWithResult), 0x0020080000000001);
+				UProperty* NewProp_FailureQuests_Inner = new(EC_InternalUseOnlyConstructor, NewProp_FailureQuests, TEXT("FailureQuests"), RF_Public|RF_Transient|RF_MarkAsNative) UObjectProperty(FObjectInitializer(), EC_CppProperty, 0, 0x0000000000000000, Z_Construct_UClass_UQuest_NoRegister());
+				UProperty* NewProp_SuccessInputs = new(EC_InternalUseOnlyConstructor, OuterClass, TEXT("SuccessInputs"), RF_Public|RF_Transient|RF_MarkAsNative) UArrayProperty(CPP_PROPERTY_BASE(SuccessInputs, UQuestWithResult), 0x0020080000000001);
+				UProperty* NewProp_SuccessInputs_Inner = new(EC_InternalUseOnlyConstructor, NewProp_SuccessInputs, TEXT("SuccessInputs"), RF_Public|RF_Transient|RF_MarkAsNative) UObjectProperty(FObjectInitializer(), EC_CppProperty, 0, 0x0000000000000000, Z_Construct_UClass_USM_InputAtom_NoRegister());
+				UProperty* NewProp_SuccessQuests = new(EC_InternalUseOnlyConstructor, OuterClass, TEXT("SuccessQuests"), RF_Public|RF_Transient|RF_MarkAsNative) UArrayProperty(CPP_PROPERTY_BASE(SuccessQuests, UQuestWithResult), 0x0020080000000001);
+				UProperty* NewProp_SuccessQuests_Inner = new(EC_InternalUseOnlyConstructor, NewProp_SuccessQuests, TEXT("SuccessQuests"), RF_Public|RF_Transient|RF_MarkAsNative) UObjectProperty(FObjectInitializer(), EC_CppProperty, 0, 0x0000000000000000, Z_Construct_UClass_UQuest_NoRegister());
+				static TCppClassTypeInfo<TCppClassTypeTraits<UQuestWithResult> > StaticCppClassTypeInfo;
+				OuterClass->SetCppTypeInfo(&StaticCppClassTypeInfo);
+				OuterClass->StaticLink();
+#if WITH_METADATA
+				UMetaData* MetaData = OuterClass->GetOutermost()->GetMetaData();
+				MetaData->SetValue(OuterClass, TEXT("IncludePath"), TEXT("Quest.h"));
+				MetaData->SetValue(OuterClass, TEXT("ModuleRelativePath"), TEXT("Quest.h"));
+				MetaData->SetValue(NewProp_FailureInputs, TEXT("Category"), TEXT("QuestWithResult"));
+				MetaData->SetValue(NewProp_FailureInputs, TEXT("ModuleRelativePath"), TEXT("Quest.h"));
+				MetaData->SetValue(NewProp_FailureInputs, TEXT("ToolTip"), TEXT("*       Input atoms of failed quests"));
+				MetaData->SetValue(NewProp_FailureQuests, TEXT("Category"), TEXT("QuestWithResult"));
+				MetaData->SetValue(NewProp_FailureQuests, TEXT("ModuleRelativePath"), TEXT("Quest.h"));
+				MetaData->SetValue(NewProp_FailureQuests, TEXT("ToolTip"), TEXT("*       Quests in this list will go from NotStarted to Started if the current quest fails"));
+				MetaData->SetValue(NewProp_SuccessInputs, TEXT("Category"), TEXT("QuestWithResult"));
+				MetaData->SetValue(NewProp_SuccessInputs, TEXT("ModuleRelativePath"), TEXT("Quest.h"));
+				MetaData->SetValue(NewProp_SuccessInputs, TEXT("ToolTip"), TEXT("*       Input atoms to add if the quest succeeds"));
+				MetaData->SetValue(NewProp_SuccessQuests, TEXT("Category"), TEXT("QuestWithResult"));
+				MetaData->SetValue(NewProp_SuccessQuests, TEXT("ModuleRelativePath"), TEXT("Quest.h"));
+				MetaData->SetValue(NewProp_SuccessQuests, TEXT("ToolTip"), TEXT("*       The quests in this list will go from NotStarted to Started if the current quest succeeds."));
+#endif
+			}
+		}
+		check(OuterClass->GetClass());
+		return OuterClass;
+	}
+	IMPLEMENT_CLASS(UQuestWithResult, 2290901248);
+	static FCompiledInDefer Z_CompiledInDefer_UClass_UQuestWithResult(Z_Construct_UClass_UQuestWithResult, &UQuestWithResult::StaticClass, TEXT("/Script/PluginDevelopment"), TEXT("UQuestWithResult"), false, nullptr, nullptr, nullptr);
+	DEFINE_VTABLE_PTR_HELPER_CTOR(UQuestWithResult);
 PRAGMA_ENABLE_DEPRECATION_WARNINGS
 #ifdef _MSC_VER
 #pragma warning (pop)

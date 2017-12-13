@@ -4,7 +4,7 @@
 	<ItemGroup>
 		<None Include="..\..\PluginDevelopment.uproject" />
 		<Filter Include="Source">
-			<UniqueIdentifier>{65B78DBB-1CFD-4E45-9BCD-5AB38A9D44FF}</UniqueIdentifier>
+			<UniqueIdentifier>{A3800D07-F691-4179-8115-90C3474EA5E3}</UniqueIdentifier>
 		</Filter>
 		<None Include="..\..\Source\PluginDevelopment.Target.cs">
 			<Filter>Source</Filter>
@@ -13,7 +13,7 @@
 			<Filter>Source</Filter>
 		</None >
 		<Filter Include="Config">
-			<UniqueIdentifier>{9EA23CDE-DE3A-4226-8348-1CB28E363EFA}</UniqueIdentifier>
+			<UniqueIdentifier>{1BACB56D-DA86-4513-8F71-8EB7CB1B2366}</UniqueIdentifier>
 		</Filter>
 		<None Include="..\..\Config\DefaultEditor.ini">
 			<Filter>Config</Filter>
@@ -25,22 +25,22 @@
 			<Filter>Config</Filter>
 		</None >
 		<Filter Include="Plugins">
-			<UniqueIdentifier>{3655615C-F17B-44F9-8148-4ED39BE487EA}</UniqueIdentifier>
+			<UniqueIdentifier>{08F2920C-DB77-43BF-84F5-D60F8B68EEE0}</UniqueIdentifier>
 		</Filter>
 		<Filter Include="Plugins\StateMachine">
-			<UniqueIdentifier>{A98E2B2F-AC0D-4F29-A19F-38636A812184}</UniqueIdentifier>
+			<UniqueIdentifier>{3360486E-19ED-401B-A20C-A4BF8810A9C5}</UniqueIdentifier>
 		</Filter>
 		<Filter Include="Plugins\StateMachine\Source">
-			<UniqueIdentifier>{7887CC39-3F45-4047-A9C1-A59E01FE510F}</UniqueIdentifier>
+			<UniqueIdentifier>{0701B6BF-CB6A-44BC-9122-0E6506BABA27}</UniqueIdentifier>
 		</Filter>
 		<Filter Include="Plugins\StateMachine\Source\StateMachine">
-			<UniqueIdentifier>{4CCA09A7-D423-413B-8977-1659EE98B44C}</UniqueIdentifier>
+			<UniqueIdentifier>{8881B90F-F2D7-4884-B8FC-8F5214793331}</UniqueIdentifier>
 		</Filter>
 		<None Include="..\..\Plugins\StateMachine\Source\StateMachine\StateMachine.Build.cs">
 			<Filter>Plugins\StateMachine\Source\StateMachine</Filter>
 		</None >
 		<Filter Include="Plugins\StateMachine\Source\StateMachine\Private">
-			<UniqueIdentifier>{C13CB891-80C3-4444-8418-C9D567C090EE}</UniqueIdentifier>
+			<UniqueIdentifier>{F37F55B3-583E-4F7D-A31E-89CC2478BE90}</UniqueIdentifier>
 		</Filter>
 		<ClCompile Include="..\..\Plugins\StateMachine\Source\StateMachine\Private\SM_State.cpp">
 			<Filter>Plugins\StateMachine\Source\StateMachine\Private</Filter>
@@ -49,7 +49,7 @@
 			<Filter>Plugins\StateMachine\Source\StateMachine\Private</Filter>
 		</ClCompile >
 		<Filter Include="Plugins\StateMachine\Source\StateMachine\Public">
-			<UniqueIdentifier>{D93CC916-48F2-4232-8B7F-890C05843B45}</UniqueIdentifier>
+			<UniqueIdentifier>{683CE5AC-C016-492E-BC05-D67D035709CA}</UniqueIdentifier>
 		</Filter>
 		<ClInclude Include="..\..\Plugins\StateMachine\Source\StateMachine\Public\SM_State.h">
 			<Filter>Plugins\StateMachine\Source\StateMachine\Public</Filter>
@@ -61,13 +61,13 @@
 			<Filter>Plugins\StateMachine</Filter>
 		</None >
 		<Filter Include="Plugins\StateMachine\Resources">
-			<UniqueIdentifier>{C33ED8CD-51ED-423E-93B5-2E7C97DA7904}</UniqueIdentifier>
+			<UniqueIdentifier>{641D57F3-3557-4594-B481-2C26FC0AF796}</UniqueIdentifier>
 		</Filter>
 		<None Include="..\..\Plugins\StateMachine\Resources\Icon128.png">
 			<Filter>Plugins\StateMachine\Resources</Filter>
 		</None >
 		<Filter Include="Source\PluginDevelopment">
-			<UniqueIdentifier>{61CA4528-1233-4756-A565-656B8D59BE82}</UniqueIdentifier>
+			<UniqueIdentifier>{1B2C2C79-6D84-4517-ABEB-49F1338666F6}</UniqueIdentifier>
 		</Filter>
 		<None Include="..\..\Source\PluginDevelopment\PluginDevelopment.Build.cs">
 			<Filter>Source\PluginDevelopment</Filter>

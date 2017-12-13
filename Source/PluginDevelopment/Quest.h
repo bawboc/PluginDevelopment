@@ -156,3 +156,39 @@ protected:
 	UPROPERTY(EditAnywhere)
 		TArray<FQuestInProgress> QuestList;
 };
+
+
+UCLASS()
+class PLUGINDEVELOPMENT_API UQuestWithResult : public UQuest {
+	GENERATED_BODY()
+
+public:
+
+	virtual void OnSucceeded(class UQuestStatus* QuestStatus) const override;
+	virtual void OnFailed(class UQuestStatus* QuestStatus) const override;
+
+protected:
+	/*
+	*	The quests in this list will go from NotStarted to Started if the current quest succeeds.
+	*/
+	UPROPERTY(EditAnywhere)
+		TArray<UQuest*> SuccessQuests;
+
+	/*
+	*	Input atoms to add if the quest succeeds
+	*/
+	UPROPERTY(EditAnywhere)
+		TArray<USM_InputAtom*> SuccessInputs;
+
+	/*
+	*	Quests in this list will go from NotStarted to Started if the current quest fails
+	*/
+	UPROPERTY(EditAnywhere)
+		TArray<UQuest*> FailureQuests;
+
+	/*
+	*	Input atoms of failed quests
+	*/
+	UPROPERTY(EditAnywhere)
+		TArray<USM_InputAtom*> FailureInputs;
+};

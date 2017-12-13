@@ -6,7 +6,7 @@
 UQuestStatus::UQuestStatus() {
 	// Set this component to be initialized when the game starts, and to be ticked every frame.  You can turn these features
 	// off to improve performance if you don't need them.
-	bWantsBeginPlay = true;
+	//bWantsBeginPlay = true;
 	PrimaryComponentTick.bCanEverTick = true;
 }
 
@@ -58,7 +58,20 @@ void UQuestStatus::UpdateQuests(USM_InputAtom* QuestActivity) {
 
 bool UQuestStatus::BeginQuest(const UQuest * Quest) {
 
-	return false;
+	for (FQuestInProgress& QIP : QuestList) {
+		if (QIP.Quest == Quest) {
+			if (QIP.QuestProgress == EQuestCompletion::EQC_NotStarted) {
+				UE_LOG(LogTemp, Warning, TEXT("Changing quest \"%s\" to Started status."), *QIP.Quest->QuestName.ToString());
+				QIP.QuestProgress = EQuestCompletion::EQC_Started;
+				return true;
+			}
+			UE_LOG(LogTemp, Warning, TEXT("Quest \"%s\" is already in the list."), *QIP.Quest->QuestName.ToString());
+			return false;
+		}
+	}
+	UE_LOG(LogTemp, Warning, TEXT("Adding quest \"%s\" to the list and starting it."), *Quest->QuestName.ToString());
+	QuestList.Add(FQuestInProgress::NewQuestInProgress(Quest));
+	return true;
 }
 
 void UQuest::OnSucceeded(UQuestStatus * QuestStatus) const {
@@ -67,4 +80,28 @@ void UQuest::OnSucceeded(UQuestStatus * QuestStatus) const {
 
 void UQuest::OnFailed(UQuestStatus * QuestStatus) const {
 	UE_LOG(LogTemp, Warning, TEXT("Quest \"%s\" failed!"), *QuestName.ToString());
+}
+
+void UQuestWithResult::OnSucceeded(UQuestStatus* QuestStatus) const {
+	Super::OnSucceeded(QuestStatus);
+
+	for (UQuest* SuccessQuest : SuccessQuests) {
+		QuestStatus->BeginQuest(SuccessQuest);
+	}
+
+	for (int32 i = 0; i < SuccessInputs.Num(); ++i) {
+		QuestStatus->UpdateQuests(SuccessInputs[i]);
+	}
+}
+
+void UQuestWithResult::OnFailed(UQuestStatus* QuestStatus) const {
+	Super::OnFailed(QuestStatus);
+
+	for (UQuest* FailureQuest : FailureQuests) {
+		QuestStatus->BeginQuest(FailureQuest);
+	}
+
+	for (int32 i = 0; i < FailureInputs.Num(); ++i) {
+		QuestStatus->UpdateQuests(FailureInputs[i]);
+	}
 }

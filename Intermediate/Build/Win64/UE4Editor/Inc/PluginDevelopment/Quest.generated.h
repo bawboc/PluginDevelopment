@@ -206,6 +206,84 @@ private: \
 PRAGMA_ENABLE_DEPRECATION_WARNINGS
 
 
+#define PluginDevelopment_Source_PluginDevelopment_Quest_h_163_RPC_WRAPPERS
+#define PluginDevelopment_Source_PluginDevelopment_Quest_h_163_RPC_WRAPPERS_NO_PURE_DECLS
+#define PluginDevelopment_Source_PluginDevelopment_Quest_h_163_INCLASS_NO_PURE_DECLS \
+private: \
+	static void StaticRegisterNativesUQuestWithResult(); \
+	friend PLUGINDEVELOPMENT_API class UClass* Z_Construct_UClass_UQuestWithResult(); \
+public: \
+	DECLARE_CLASS(UQuestWithResult, UQuest, COMPILED_IN_FLAGS(0), 0, TEXT("/Script/PluginDevelopment"), NO_API) \
+	DECLARE_SERIALIZER(UQuestWithResult) \
+	enum {IsIntrinsic=COMPILED_IN_INTRINSIC};
+
+
+#define PluginDevelopment_Source_PluginDevelopment_Quest_h_163_INCLASS \
+private: \
+	static void StaticRegisterNativesUQuestWithResult(); \
+	friend PLUGINDEVELOPMENT_API class UClass* Z_Construct_UClass_UQuestWithResult(); \
+public: \
+	DECLARE_CLASS(UQuestWithResult, UQuest, COMPILED_IN_FLAGS(0), 0, TEXT("/Script/PluginDevelopment"), NO_API) \
+	DECLARE_SERIALIZER(UQuestWithResult) \
+	enum {IsIntrinsic=COMPILED_IN_INTRINSIC};
+
+
+#define PluginDevelopment_Source_PluginDevelopment_Quest_h_163_STANDARD_CONSTRUCTORS \
+	/** Standard constructor, called after all reflected properties have been initialized */ \
+	NO_API UQuestWithResult(const FObjectInitializer& ObjectInitializer = FObjectInitializer::Get()); \
+	DEFINE_DEFAULT_OBJECT_INITIALIZER_CONSTRUCTOR_CALL(UQuestWithResult) \
+	DECLARE_VTABLE_PTR_HELPER_CTOR(NO_API, UQuestWithResult); \
+DEFINE_VTABLE_PTR_HELPER_CTOR_CALLER(UQuestWithResult); \
+private: \
+	/** Private move- and copy-constructors, should never be used */ \
+	NO_API UQuestWithResult(UQuestWithResult&&); \
+	NO_API UQuestWithResult(const UQuestWithResult&); \
+public:
+
+
+#define PluginDevelopment_Source_PluginDevelopment_Quest_h_163_ENHANCED_CONSTRUCTORS \
+	/** Standard constructor, called after all reflected properties have been initialized */ \
+	NO_API UQuestWithResult(const FObjectInitializer& ObjectInitializer = FObjectInitializer::Get()) : Super(ObjectInitializer) { }; \
+private: \
+	/** Private move- and copy-constructors, should never be used */ \
+	NO_API UQuestWithResult(UQuestWithResult&&); \
+	NO_API UQuestWithResult(const UQuestWithResult&); \
+public: \
+	DECLARE_VTABLE_PTR_HELPER_CTOR(NO_API, UQuestWithResult); \
+DEFINE_VTABLE_PTR_HELPER_CTOR_CALLER(UQuestWithResult); \
+	DEFINE_DEFAULT_OBJECT_INITIALIZER_CONSTRUCTOR_CALL(UQuestWithResult)
+
+
+#define PluginDevelopment_Source_PluginDevelopment_Quest_h_163_PRIVATE_PROPERTY_OFFSET \
+	FORCEINLINE static uint32 __PPO__SuccessQuests() { return STRUCT_OFFSET(UQuestWithResult, SuccessQuests); } \
+	FORCEINLINE static uint32 __PPO__SuccessInputs() { return STRUCT_OFFSET(UQuestWithResult, SuccessInputs); } \
+	FORCEINLINE static uint32 __PPO__FailureQuests() { return STRUCT_OFFSET(UQuestWithResult, FailureQuests); } \
+	FORCEINLINE static uint32 __PPO__FailureInputs() { return STRUCT_OFFSET(UQuestWithResult, FailureInputs); }
+
+
+#define PluginDevelopment_Source_PluginDevelopment_Quest_h_161_PROLOG
+#define PluginDevelopment_Source_PluginDevelopment_Quest_h_163_GENERATED_BODY_LEGACY \
+PRAGMA_DISABLE_DEPRECATION_WARNINGS \
+public: \
+	PluginDevelopment_Source_PluginDevelopment_Quest_h_163_PRIVATE_PROPERTY_OFFSET \
+	PluginDevelopment_Source_PluginDevelopment_Quest_h_163_RPC_WRAPPERS \
+	PluginDevelopment_Source_PluginDevelopment_Quest_h_163_INCLASS \
+	PluginDevelopment_Source_PluginDevelopment_Quest_h_163_STANDARD_CONSTRUCTORS \
+public: \
+PRAGMA_ENABLE_DEPRECATION_WARNINGS
+
+
+#define PluginDevelopment_Source_PluginDevelopment_Quest_h_163_GENERATED_BODY \
+PRAGMA_DISABLE_DEPRECATION_WARNINGS \
+public: \
+	PluginDevelopment_Source_PluginDevelopment_Quest_h_163_PRIVATE_PROPERTY_OFFSET \
+	PluginDevelopment_Source_PluginDevelopment_Quest_h_163_RPC_WRAPPERS_NO_PURE_DECLS \
+	PluginDevelopment_Source_PluginDevelopment_Quest_h_163_INCLASS_NO_PURE_DECLS \
+	PluginDevelopment_Source_PluginDevelopment_Quest_h_163_ENHANCED_CONSTRUCTORS \
+private: \
+PRAGMA_ENABLE_DEPRECATION_WARNINGS
+
+
 #undef CURRENT_FILE_ID
 #define CURRENT_FILE_ID PluginDevelopment_Source_PluginDevelopment_Quest_h
 

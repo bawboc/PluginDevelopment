@@ -245,7 +245,8 @@ DEFINE_VTABLE_PTR_HELPER_CTOR_CALLER(USM_State); \
 
 #define PluginDevelopment_Plugins_StateMachine_Source_StateMachine_Public_SM_State_h_84_PRIVATE_PROPERTY_OFFSET \
 	FORCEINLINE static uint32 __PPO__CompletionType() { return STRUCT_OFFSET(USM_State, CompletionType); } \
-	FORCEINLINE static uint32 __PPO__InstancedBranches() { return STRUCT_OFFSET(USM_State, InstancedBranches); }
+	FORCEINLINE static uint32 __PPO__InstancedBranches() { return STRUCT_OFFSET(USM_State, InstancedBranches); } \
+	FORCEINLINE static uint32 __PPO__SharedBranches() { return STRUCT_OFFSET(USM_State, SharedBranches); }
 
 
 #define PluginDevelopment_Plugins_StateMachine_Source_StateMachine_Public_SM_State_h_82_PROLOG

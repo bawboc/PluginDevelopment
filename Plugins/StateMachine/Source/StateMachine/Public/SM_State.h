@@ -116,7 +116,6 @@ protected:
 	UPROPERTY(EditAnywhere)
 		uint32 bTerminateImmediately : 1;
 
-
 	/*
 	*	If this is set, this state will loop on itself whenever an unhandles input atom is detected.
 	*/
@@ -129,4 +128,11 @@ protected:
 	*/
 	UPROPERTY(EditAnywhere, Instanced)
 		TArray<USM_Branch*> InstancedBranches;
+
+	/*
+	*	Branches to other states.  These are in priority order, so the
+	*	first successful branch will be taken.  These run after InstancedBranches.
+	*/
+	UPROPERTY(EditAnywhere)
+		TArray<USM_Branch*> SharedBranches;
 };

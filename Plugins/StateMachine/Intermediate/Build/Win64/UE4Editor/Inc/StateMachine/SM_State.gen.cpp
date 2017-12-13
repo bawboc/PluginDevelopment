@@ -260,6 +260,8 @@ static struct FScriptStruct_StateMachine_StaticRegisterNativesFSateMachineResult
 
 				OuterClass->LinkChild(Z_Construct_UFunction_USM_State_RunState());
 
+				UProperty* NewProp_SharedBranches = new(EC_InternalUseOnlyConstructor, OuterClass, TEXT("SharedBranches"), RF_Public|RF_Transient|RF_MarkAsNative) UArrayProperty(CPP_PROPERTY_BASE(SharedBranches, USM_State), 0x0020080000000001);
+				UProperty* NewProp_SharedBranches_Inner = new(EC_InternalUseOnlyConstructor, NewProp_SharedBranches, TEXT("SharedBranches"), RF_Public|RF_Transient|RF_MarkAsNative) UObjectProperty(FObjectInitializer(), EC_CppProperty, 0, 0x0000000000000000, Z_Construct_UClass_USM_Branch_NoRegister());
 				UProperty* NewProp_InstancedBranches = new(EC_InternalUseOnlyConstructor, OuterClass, TEXT("InstancedBranches"), RF_Public|RF_Transient|RF_MarkAsNative) UArrayProperty(CPP_PROPERTY_BASE(InstancedBranches, USM_State), 0x0020088000000009);
 				UProperty* NewProp_InstancedBranches_Inner = new(EC_InternalUseOnlyConstructor, NewProp_InstancedBranches, TEXT("InstancedBranches"), RF_Public|RF_Transient|RF_MarkAsNative) UObjectProperty(FObjectInitializer(), EC_CppProperty, 0, 0x0002000000080008, Z_Construct_UClass_USM_Branch_NoRegister());
 				CPP_BOOL_PROPERTY_BITMASK_STRUCT(bLoopByDefault, USM_State);
@@ -276,6 +278,9 @@ static struct FScriptStruct_StateMachine_StaticRegisterNativesFSateMachineResult
 				UMetaData* MetaData = OuterClass->GetOutermost()->GetMetaData();
 				MetaData->SetValue(OuterClass, TEXT("IncludePath"), TEXT("SM_State.h"));
 				MetaData->SetValue(OuterClass, TEXT("ModuleRelativePath"), TEXT("Public/SM_State.h"));
+				MetaData->SetValue(NewProp_SharedBranches, TEXT("Category"), TEXT("SM_State"));
+				MetaData->SetValue(NewProp_SharedBranches, TEXT("ModuleRelativePath"), TEXT("Public/SM_State.h"));
+				MetaData->SetValue(NewProp_SharedBranches, TEXT("ToolTip"), TEXT("*       Branches to other states.  These are in priority order, so the\n*       first successful branch will be taken.  These run after InstancedBranches."));
 				MetaData->SetValue(NewProp_InstancedBranches, TEXT("Category"), TEXT("SM_State"));
 				MetaData->SetValue(NewProp_InstancedBranches, TEXT("EditInline"), TEXT("true"));
 				MetaData->SetValue(NewProp_InstancedBranches, TEXT("ModuleRelativePath"), TEXT("Public/SM_State.h"));
@@ -299,7 +304,7 @@ static struct FScriptStruct_StateMachine_StaticRegisterNativesFSateMachineResult
 		check(OuterClass->GetClass());
 		return OuterClass;
 	}
-	IMPLEMENT_CLASS(USM_State, 1371414199);
+	IMPLEMENT_CLASS(USM_State, 3727310829);
 	static FCompiledInDefer Z_CompiledInDefer_UClass_USM_State(Z_Construct_UClass_USM_State, &USM_State::StaticClass, TEXT("/Script/StateMachine"), TEXT("USM_State"), false, nullptr, nullptr, nullptr);
 	DEFINE_VTABLE_PTR_HELPER_CTOR(USM_State);
 PRAGMA_ENABLE_DEPRECATION_WARNINGS

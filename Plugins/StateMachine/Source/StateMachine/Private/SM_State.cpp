@@ -10,16 +10,18 @@ USM_State::USM_State()
 USM_State* USM_Branch::TryBranch(const UObject* RefObject, const TArray<USM_InputAtom*>& DataSource,
 	int32 DataIndex, int32 &OutDataIndex) 
 {
-	OutDataIndex = DataIndex;
-	if (!AcceptableInputs.Num() || (DataSource.IsValidIndex(DataIndex)) && AcceptableInputs.Contains(DataSource[DataIndex])) 
+	OutDataIndex = DataIndex + 1;
+	if (DataSource.IsValidIndex(DataIndex) && AcceptableInputs.Contains(DataSource[DataIndex])) 
 	{
-		++OutDataIndex;
 		return bReverseInputTest ? nullptr : DestinationState;
 	}
 	
 	return bReverseInputTest ? DestinationState : nullptr;
 }
 
+/*
+*	Process each InstancedBranch first then SharedBranches
+*/
 FSateMachineResult USM_State::RunState(const UObject* RefObject,
 	const TArray<USM_InputAtom*>& DataSource, int32 DataIndex, int32 RemainingSteps)
 {
@@ -32,6 +34,19 @@ FSateMachineResult USM_State::RunState(const UObject* RefObject,
 		for (auto i = 0; i < InstancedBranches.Num(); ++i) {
 			if (InstancedBranches[i]) {
 				DestinationState = InstancedBranches[i]->TryBranch(RefObject, DataSource, DataIndex, DestinationDataIndex);
+				if (DestinationState) {
+					return DestinationState->RunState(RefObject, DataSource, DestinationDataIndex, RemainingSteps - 1);
+				}
+			}
+		}
+
+		/*
+		*	New Code from video two to process SharedBranches
+		*/
+		for (int32 i = 0; i < SharedBranches.Num(); ++	i) {
+			// Shouldn't be null branches.
+			if (SharedBranches[i]) {
+				DestinationState = SharedBranches[i]->TryBranch(RefObject, DataSource, DataIndex, DestinationDataIndex);
 				if (DestinationState) {
 					return DestinationState->RunState(RefObject, DataSource, DestinationDataIndex, RemainingSteps - 1);
 				}

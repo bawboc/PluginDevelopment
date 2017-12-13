@@ -17,27 +17,27 @@
 	"BuildProducts" :
 	[
 		{
-			"Path" : "$(ProjectDir)/Plugins/StateMachine/Binaries/Win64/UE4Editor-StateMachine-4421.dll",
+			"Path" : "$(ProjectDir)/Plugins/StateMachine/Binaries/Win64/UE4Editor-StateMachine-3504.dll",
 			"Type" : "DynamicLibrary"
 		},
 		{
-			"Path" : "$(ProjectDir)/Plugins/StateMachine/Binaries/Win64/UE4Editor-StateMachine-4421.pdb",
+			"Path" : "$(ProjectDir)/Plugins/StateMachine/Binaries/Win64/UE4Editor-StateMachine-3504.pdb",
 			"Type" : "SymbolFile"
 		},
 		{
-			"Path" : "$(ProjectDir)/Plugins/StateMachine/Intermediate/Build/Win64/UE4Editor/Development/UE4Editor-StateMachine-4421.lib",
+			"Path" : "$(ProjectDir)/Plugins/StateMachine/Intermediate/Build/Win64/UE4Editor/Development/UE4Editor-StateMachine-3504.lib",
 			"Type" : "ImportLibrary"
 		},
 		{
-			"Path" : "$(ProjectDir)/Binaries/Win64/UE4Editor-PluginDevelopment-9931.dll",
+			"Path" : "$(ProjectDir)/Binaries/Win64/UE4Editor-PluginDevelopment-9464.dll",
 			"Type" : "DynamicLibrary"
 		},
 		{
-			"Path" : "$(ProjectDir)/Binaries/Win64/UE4Editor-PluginDevelopment-9931.pdb",
+			"Path" : "$(ProjectDir)/Binaries/Win64/UE4Editor-PluginDevelopment-9464.pdb",
 			"Type" : "SymbolFile"
 		},
 		{
-			"Path" : "$(ProjectDir)/Intermediate/Build/Win64/UE4Editor/Development/UE4Editor-PluginDevelopment-9931.lib",
+			"Path" : "$(ProjectDir)/Intermediate/Build/Win64/UE4Editor/Development/UE4Editor-PluginDevelopment-9464.lib",
 			"Type" : "ImportLibrary"
 		},
 		{

@@ -20,7 +20,7 @@ void EmptyLinkFunctionForGeneratedCodeStateMachine_init() {}
 			ReturnPackage = CastChecked<UPackage>(StaticFindObjectFast(UPackage::StaticClass(), nullptr, FName(TEXT("/Script/StateMachine")), false, false));
 			ReturnPackage->SetPackageFlags(PKG_CompiledIn | 0x00000000);
 			FGuid Guid;
-			Guid.A = 0x315D0262;
+			Guid.A = 0xCE4E0EEB;
 			Guid.B = 0x22FC7644;
 			Guid.C = 0x00000000;
 			Guid.D = 0x00000000;

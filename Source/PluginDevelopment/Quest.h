@@ -49,6 +49,9 @@ public:
 	*/
 	UPROPERTY(EditAnywhere)
 		TArray<USM_InputAtom*> InputList;
+
+	virtual void OnSucceeded(class UQuestStatus* QuestStatus) const;
+	virtual void OnFailed(class UQuestStatus* QuestStatus) const;
 	
 };
 
@@ -96,6 +99,13 @@ public:
 		}
 		return false;
 	}
+
+	static FQuestInProgress NewQuestInProgress(const UQuest* _Quest) {
+		FQuestInProgress NewQIP;
+		NewQIP.Quest = _Quest;
+		NewQIP.QuestProgress = EQuestCompletion::EQC_Started;
+		return NewQIP;
+	}
 };
 
 UCLASS(ClassGroup = (Custom), meta= (BlueprintSpawnableComponent))
@@ -125,6 +135,13 @@ public:
 	*/
 	UFUNCTION(BlueprintCallable, Category = "Quests")
 		void UpdateQuests(USM_InputAtom* QuestActivity);
+
+	/*
+	*	Add a new quest-in-progress entry or begin the quest provided if it's
+	*	already on the list and hasn't been started yet.
+	*/
+	UFUNCTION(BlueprintCallable, Category = "Quests")
+		bool BeginQuest(const UQuest* Quest);
 
 protected:
 	/*

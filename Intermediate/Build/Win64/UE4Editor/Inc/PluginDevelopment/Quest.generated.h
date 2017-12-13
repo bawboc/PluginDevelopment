@@ -8,13 +8,14 @@
 #include "ScriptMacros.h"
 
 PRAGMA_DISABLE_DEPRECATION_WARNINGS
+class UQuest;
 class USM_InputAtom;
 #ifdef PLUGINDEVELOPMENT_Quest_generated_h
 #error "Quest.generated.h already included, missing '#pragma once' in Quest.h"
 #endif
 #define PLUGINDEVELOPMENT_Quest_generated_h
 
-#define PluginDevelopment_Source_PluginDevelopment_Quest_h_57_GENERATED_BODY \
+#define PluginDevelopment_Source_PluginDevelopment_Quest_h_60_GENERATED_BODY \
 	friend PLUGINDEVELOPMENT_API class UScriptStruct* Z_Construct_UScriptStruct_FQuestInProgress(); \
 	PLUGINDEVELOPMENT_API static class UScriptStruct* StaticStruct();
 
@@ -91,7 +92,16 @@ private: \
 PRAGMA_ENABLE_DEPRECATION_WARNINGS
 
 
-#define PluginDevelopment_Source_PluginDevelopment_Quest_h_104_RPC_WRAPPERS \
+#define PluginDevelopment_Source_PluginDevelopment_Quest_h_114_RPC_WRAPPERS \
+ \
+	DECLARE_FUNCTION(execBeginQuest) \
+	{ \
+		P_GET_OBJECT(UQuest,Z_Param_Quest); \
+		P_FINISH; \
+		P_NATIVE_BEGIN; \
+		*(bool*)Z_Param__Result=this->BeginQuest(Z_Param_Quest); \
+		P_NATIVE_END; \
+	} \
  \
 	DECLARE_FUNCTION(execUpdateQuests) \
 	{ \
@@ -103,7 +113,16 @@ PRAGMA_ENABLE_DEPRECATION_WARNINGS
 	}
 
 
-#define PluginDevelopment_Source_PluginDevelopment_Quest_h_104_RPC_WRAPPERS_NO_PURE_DECLS \
+#define PluginDevelopment_Source_PluginDevelopment_Quest_h_114_RPC_WRAPPERS_NO_PURE_DECLS \
+ \
+	DECLARE_FUNCTION(execBeginQuest) \
+	{ \
+		P_GET_OBJECT(UQuest,Z_Param_Quest); \
+		P_FINISH; \
+		P_NATIVE_BEGIN; \
+		*(bool*)Z_Param__Result=this->BeginQuest(Z_Param_Quest); \
+		P_NATIVE_END; \
+	} \
  \
 	DECLARE_FUNCTION(execUpdateQuests) \
 	{ \
@@ -115,7 +134,7 @@ PRAGMA_ENABLE_DEPRECATION_WARNINGS
 	}
 
 
-#define PluginDevelopment_Source_PluginDevelopment_Quest_h_104_INCLASS_NO_PURE_DECLS \
+#define PluginDevelopment_Source_PluginDevelopment_Quest_h_114_INCLASS_NO_PURE_DECLS \
 private: \
 	static void StaticRegisterNativesUQuestStatus(); \
 	friend PLUGINDEVELOPMENT_API class UClass* Z_Construct_UClass_UQuestStatus(); \
@@ -125,7 +144,7 @@ public: \
 	enum {IsIntrinsic=COMPILED_IN_INTRINSIC};
 
 
-#define PluginDevelopment_Source_PluginDevelopment_Quest_h_104_INCLASS \
+#define PluginDevelopment_Source_PluginDevelopment_Quest_h_114_INCLASS \
 private: \
 	static void StaticRegisterNativesUQuestStatus(); \
 	friend PLUGINDEVELOPMENT_API class UClass* Z_Construct_UClass_UQuestStatus(); \
@@ -135,7 +154,7 @@ public: \
 	enum {IsIntrinsic=COMPILED_IN_INTRINSIC};
 
 
-#define PluginDevelopment_Source_PluginDevelopment_Quest_h_104_STANDARD_CONSTRUCTORS \
+#define PluginDevelopment_Source_PluginDevelopment_Quest_h_114_STANDARD_CONSTRUCTORS \
 	/** Standard constructor, called after all reflected properties have been initialized */ \
 	NO_API UQuestStatus(const FObjectInitializer& ObjectInitializer); \
 	DEFINE_DEFAULT_OBJECT_INITIALIZER_CONSTRUCTOR_CALL(UQuestStatus) \
@@ -148,7 +167,7 @@ private: \
 public:
 
 
-#define PluginDevelopment_Source_PluginDevelopment_Quest_h_104_ENHANCED_CONSTRUCTORS \
+#define PluginDevelopment_Source_PluginDevelopment_Quest_h_114_ENHANCED_CONSTRUCTORS \
 private: \
 	/** Private move- and copy-constructors, should never be used */ \
 	NO_API UQuestStatus(UQuestStatus&&); \
@@ -159,30 +178,30 @@ DEFINE_VTABLE_PTR_HELPER_CTOR_CALLER(UQuestStatus); \
 	DEFINE_DEFAULT_CONSTRUCTOR_CALL(UQuestStatus)
 
 
-#define PluginDevelopment_Source_PluginDevelopment_Quest_h_104_PRIVATE_PROPERTY_OFFSET \
+#define PluginDevelopment_Source_PluginDevelopment_Quest_h_114_PRIVATE_PROPERTY_OFFSET \
 	FORCEINLINE static uint32 __PPO__QuestActivities() { return STRUCT_OFFSET(UQuestStatus, QuestActivities); } \
 	FORCEINLINE static uint32 __PPO__QuestList() { return STRUCT_OFFSET(UQuestStatus, QuestList); }
 
 
-#define PluginDevelopment_Source_PluginDevelopment_Quest_h_101_PROLOG
-#define PluginDevelopment_Source_PluginDevelopment_Quest_h_104_GENERATED_BODY_LEGACY \
+#define PluginDevelopment_Source_PluginDevelopment_Quest_h_111_PROLOG
+#define PluginDevelopment_Source_PluginDevelopment_Quest_h_114_GENERATED_BODY_LEGACY \
 PRAGMA_DISABLE_DEPRECATION_WARNINGS \
 public: \
-	PluginDevelopment_Source_PluginDevelopment_Quest_h_104_PRIVATE_PROPERTY_OFFSET \
-	PluginDevelopment_Source_PluginDevelopment_Quest_h_104_RPC_WRAPPERS \
-	PluginDevelopment_Source_PluginDevelopment_Quest_h_104_INCLASS \
-	PluginDevelopment_Source_PluginDevelopment_Quest_h_104_STANDARD_CONSTRUCTORS \
+	PluginDevelopment_Source_PluginDevelopment_Quest_h_114_PRIVATE_PROPERTY_OFFSET \
+	PluginDevelopment_Source_PluginDevelopment_Quest_h_114_RPC_WRAPPERS \
+	PluginDevelopment_Source_PluginDevelopment_Quest_h_114_INCLASS \
+	PluginDevelopment_Source_PluginDevelopment_Quest_h_114_STANDARD_CONSTRUCTORS \
 public: \
 PRAGMA_ENABLE_DEPRECATION_WARNINGS
 
 
-#define PluginDevelopment_Source_PluginDevelopment_Quest_h_104_GENERATED_BODY \
+#define PluginDevelopment_Source_PluginDevelopment_Quest_h_114_GENERATED_BODY \
 PRAGMA_DISABLE_DEPRECATION_WARNINGS \
 public: \
-	PluginDevelopment_Source_PluginDevelopment_Quest_h_104_PRIVATE_PROPERTY_OFFSET \
-	PluginDevelopment_Source_PluginDevelopment_Quest_h_104_RPC_WRAPPERS_NO_PURE_DECLS \
-	PluginDevelopment_Source_PluginDevelopment_Quest_h_104_INCLASS_NO_PURE_DECLS \
-	PluginDevelopment_Source_PluginDevelopment_Quest_h_104_ENHANCED_CONSTRUCTORS \
+	PluginDevelopment_Source_PluginDevelopment_Quest_h_114_PRIVATE_PROPERTY_OFFSET \
+	PluginDevelopment_Source_PluginDevelopment_Quest_h_114_RPC_WRAPPERS_NO_PURE_DECLS \
+	PluginDevelopment_Source_PluginDevelopment_Quest_h_114_INCLASS_NO_PURE_DECLS \
+	PluginDevelopment_Source_PluginDevelopment_Quest_h_114_ENHANCED_CONSTRUCTORS \
 private: \
 PRAGMA_ENABLE_DEPRECATION_WARNINGS
 

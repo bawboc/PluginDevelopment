@@ -27,15 +27,44 @@ void UQuestStatus::TickComponent(float DeltaTime, ELevelTick TickType, FActorCom
 }
 
 void UQuestStatus::UpdateQuests(USM_InputAtom* QuestActivity) {
+	
+	TArray<int32> RecentlyCompletedQuests;
+	
 	// Update the master list of everything we've ever done.
 	QuestActivities.Add(QuestActivity);
 
 	// Update individual quests (if they care about this activity) and see if they are complete.
 	for (int32 i = QuestList.Num() - 1; i >= 0; --i) {
 		if (QuestList[i].UpdateQuest(this, QuestActivity)) {
-			UE_LOG(LogTemp, Warning, TEXT("Quest \"%s\" completed: %s"),
-				*QuestList[i].Quest->QuestName.ToString(),
-				(QuestList[i].QuestProgress == EQuestCompletion::EQC_Succeeded) ? TEXT("Success") : TEXT("Failure"));
+			RecentlyCompletedQuests.Add(i);
 		}
 	}
+
+	/*
+	*	Process completed quests after update
+	*	This way a completed quest can't inject out-of-order input atoms to other quests
+	*/
+	for (int32 i = RecentlyCompletedQuests.Num() - 1; i >= 0; --i) {
+		FQuestInProgress& QIP = QuestList[RecentlyCompletedQuests[i]];
+		if (QIP.QuestProgress == EQuestCompletion::EQC_Succeeded) {
+			QIP.Quest->OnSucceeded(this);
+		}
+		else {
+			QIP.Quest->OnFailed(this);
+		}
+		RecentlyCompletedQuests.RemoveAtSwap(i);
+	}
+}
+
+bool UQuestStatus::BeginQuest(const UQuest * Quest) {
+
+	return false;
+}
+
+void UQuest::OnSucceeded(UQuestStatus * QuestStatus) const {
+	UE_LOG(LogTemp, Warning, TEXT("Quest \"%s\" succeeded!"), *QuestName.ToString());
+}
+
+void UQuest::OnFailed(UQuestStatus * QuestStatus) const {
+	UE_LOG(LogTemp, Warning, TEXT("Quest \"%s\" failed!"), *QuestName.ToString());
 }

@@ -22,8 +22,9 @@ void EmptyLinkFunctionForGeneratedCodeQuest() {}
 	ENGINE_API UClass* Z_Construct_UClass_UDataAsset();
 	STATEMACHINE_API UClass* Z_Construct_UClass_USM_InputAtom_NoRegister();
 	STATEMACHINE_API UClass* Z_Construct_UClass_USM_State_NoRegister();
-	PLUGINDEVELOPMENT_API UFunction* Z_Construct_UFunction_UQuestStatus_UpdateQuests();
+	PLUGINDEVELOPMENT_API UFunction* Z_Construct_UFunction_UQuestStatus_BeginQuest();
 	PLUGINDEVELOPMENT_API UClass* Z_Construct_UClass_UQuestStatus();
+	PLUGINDEVELOPMENT_API UFunction* Z_Construct_UFunction_UQuestStatus_UpdateQuests();
 	PLUGINDEVELOPMENT_API UClass* Z_Construct_UClass_UQuestStatus_NoRegister();
 	ENGINE_API UClass* Z_Construct_UClass_UActorComponent();
 // End Cross Module References
@@ -166,9 +167,37 @@ static struct FScriptStruct_PluginDevelopment_StaticRegisterNativesFQuestInProgr
 	{
 		UClass* Class = UQuestStatus::StaticClass();
 		static const TNameNativePtrPair<ANSICHAR> AnsiFuncs[] = {
+			{ "BeginQuest", (Native)&UQuestStatus::execBeginQuest },
 			{ "UpdateQuests", (Native)&UQuestStatus::execUpdateQuests },
 		};
 		FNativeFunctionRegistrar::RegisterFunctions(Class, AnsiFuncs, ARRAY_COUNT(AnsiFuncs));
+	}
+	UFunction* Z_Construct_UFunction_UQuestStatus_BeginQuest()
+	{
+		struct QuestStatus_eventBeginQuest_Parms
+		{
+			const UQuest* Quest;
+			bool ReturnValue;
+		};
+		UObject* Outer = Z_Construct_UClass_UQuestStatus();
+		static UFunction* ReturnFunction = nullptr;
+		if (!ReturnFunction)
+		{
+			ReturnFunction = new(EC_InternalUseOnlyConstructor, Outer, TEXT("BeginQuest"), RF_Public|RF_Transient|RF_MarkAsNative) UFunction(FObjectInitializer(), nullptr, (EFunctionFlags)0x04020401, 65535, sizeof(QuestStatus_eventBeginQuest_Parms));
+			CPP_BOOL_PROPERTY_BITMASK_STRUCT(ReturnValue, QuestStatus_eventBeginQuest_Parms);
+			UProperty* NewProp_ReturnValue = new(EC_InternalUseOnlyConstructor, ReturnFunction, TEXT("ReturnValue"), RF_Public|RF_Transient|RF_MarkAsNative) UBoolProperty(FObjectInitializer(), EC_CppProperty, CPP_BOOL_PROPERTY_OFFSET(ReturnValue, QuestStatus_eventBeginQuest_Parms), 0x0010000000000580, CPP_BOOL_PROPERTY_BITMASK(ReturnValue, QuestStatus_eventBeginQuest_Parms), sizeof(bool), true);
+			UProperty* NewProp_Quest = new(EC_InternalUseOnlyConstructor, ReturnFunction, TEXT("Quest"), RF_Public|RF_Transient|RF_MarkAsNative) UObjectProperty(CPP_PROPERTY_BASE(Quest, QuestStatus_eventBeginQuest_Parms), 0x0010000000000082, Z_Construct_UClass_UQuest_NoRegister());
+			ReturnFunction->Bind();
+			ReturnFunction->StaticLink();
+#if WITH_METADATA
+			UMetaData* MetaData = ReturnFunction->GetOutermost()->GetMetaData();
+			MetaData->SetValue(ReturnFunction, TEXT("Category"), TEXT("Quests"));
+			MetaData->SetValue(ReturnFunction, TEXT("ModuleRelativePath"), TEXT("Quest.h"));
+			MetaData->SetValue(ReturnFunction, TEXT("ToolTip"), TEXT("*       Add a new quest-in-progress entry or begin the quest provided if it's\n*       already on the list and hasn't been started yet."));
+			MetaData->SetValue(NewProp_Quest, TEXT("NativeConst"), TEXT(""));
+#endif
+		}
+		return ReturnFunction;
 	}
 	UFunction* Z_Construct_UFunction_UQuestStatus_UpdateQuests()
 	{
@@ -210,12 +239,14 @@ static struct FScriptStruct_PluginDevelopment_StaticRegisterNativesFQuestInProgr
 				UObjectForceRegistration(OuterClass);
 				OuterClass->ClassFlags |= (EClassFlags)0x20B00080u;
 
+				OuterClass->LinkChild(Z_Construct_UFunction_UQuestStatus_BeginQuest());
 				OuterClass->LinkChild(Z_Construct_UFunction_UQuestStatus_UpdateQuests());
 
 				UProperty* NewProp_QuestList = new(EC_InternalUseOnlyConstructor, OuterClass, TEXT("QuestList"), RF_Public|RF_Transient|RF_MarkAsNative) UArrayProperty(CPP_PROPERTY_BASE(QuestList, UQuestStatus), 0x0020080000000001);
 				UProperty* NewProp_QuestList_Inner = new(EC_InternalUseOnlyConstructor, NewProp_QuestList, TEXT("QuestList"), RF_Public|RF_Transient|RF_MarkAsNative) UStructProperty(FObjectInitializer(), EC_CppProperty, 0, 0x0000000000000000, Z_Construct_UScriptStruct_FQuestInProgress());
 				UProperty* NewProp_QuestActivities = new(EC_InternalUseOnlyConstructor, OuterClass, TEXT("QuestActivities"), RF_Public|RF_Transient|RF_MarkAsNative) UArrayProperty(CPP_PROPERTY_BASE(QuestActivities, UQuestStatus), 0x0020080000000001);
 				UProperty* NewProp_QuestActivities_Inner = new(EC_InternalUseOnlyConstructor, NewProp_QuestActivities, TEXT("QuestActivities"), RF_Public|RF_Transient|RF_MarkAsNative) UObjectProperty(FObjectInitializer(), EC_CppProperty, 0, 0x0000000000000000, Z_Construct_UClass_USM_InputAtom_NoRegister());
+				OuterClass->AddFunctionToFunctionMapWithOverriddenName(Z_Construct_UFunction_UQuestStatus_BeginQuest(), "BeginQuest"); // 3072059146
 				OuterClass->AddFunctionToFunctionMapWithOverriddenName(Z_Construct_UFunction_UQuestStatus_UpdateQuests(), "UpdateQuests"); // 208916817
 				static TCppClassTypeInfo<TCppClassTypeTraits<UQuestStatus> > StaticCppClassTypeInfo;
 				OuterClass->SetCppTypeInfo(&StaticCppClassTypeInfo);
@@ -238,7 +269,7 @@ static struct FScriptStruct_PluginDevelopment_StaticRegisterNativesFQuestInProgr
 		check(OuterClass->GetClass());
 		return OuterClass;
 	}
-	IMPLEMENT_CLASS(UQuestStatus, 448731619);
+	IMPLEMENT_CLASS(UQuestStatus, 1559662001);
 	static FCompiledInDefer Z_CompiledInDefer_UClass_UQuestStatus(Z_Construct_UClass_UQuestStatus, &UQuestStatus::StaticClass, TEXT("/Script/PluginDevelopment"), TEXT("UQuestStatus"), false, nullptr, nullptr, nullptr);
 	DEFINE_VTABLE_PTR_HELPER_CTOR(UQuestStatus);
 PRAGMA_ENABLE_DEPRECATION_WARNINGS
